@@ -1,0 +1,21 @@
+entities:
+  - name: SampleEntity
+    params:
+      - name: PrimaryEntity
+        primary: true
+        type: string
+      - name: NonPrimaryEntity
+        primary: false
+        type: string
+eventHandlers:
+  - event: U64Event(data u64,label indexed string)
+    handler: handleU64Event
+  - event: StringEvent(id u64,data string,label indexed string)
+    handler: handleStringEvent
+  - event: PubkeyEvent(id u64,data publicKey,label indexed string)
+    handler: handlePubkeyEvent
+  - event: U8Event(id u64,data u8,label indexed string)
+    handler: handleU8Event
+pollingInterval: 10000
+programId: 9XRQ3Wwv1Bawt1WPbp8yX8k4r6eM2ZZQyukFxJxAFtsq
+startSlot: 168891968

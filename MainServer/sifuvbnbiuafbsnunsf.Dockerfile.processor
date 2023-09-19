@@ -1,0 +1,16 @@
+FROM node:alpine
+WORKDIR /home/node/app
+RUN apk update && apk add git && npm install --location=global ts-node
+RUN git clone https://github.com/Varun-capX/test-idx -b main
+WORKDIR /home/node/app/test-idx
+RUN npm install
+RUN npm i js-yaml
+RUN npm i @types/js-yaml
+RUN npm i dotenv
+RUN npm i axios
+RUN npm i mongodb
+COPY ./ContainerFiles .
+RUN ts-node ./generatorFunction.ts
+ENV PROJECT_ID sifuvbnbiuafbsnunsf
+ENV RPC https://solana-devnet.g.alchemy.com/v2/4ZhX3cAgEx_XXS2KDaqFx4O33laF49ov
+CMD ["ts-node", "./index.ts"]
