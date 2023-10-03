@@ -49,22 +49,18 @@ This file contains the code for the init function which is responsible for initi
 
 ## Container Files
 
-### [index.ts](./ContainerFiles/index.ts)
+### [index.ts](./MainServer/ContainerFiles/index.ts)
 
 This file connects to the RPC and listens for events.
 
-### [generatorFunction.ts](./ContainerFiles/generatorFunction.ts)
+### [generatorFunction.ts](./MainServer/ContainerFiles/generatorFunction.ts)
 
 This file contains the code for the generator function which is responsible for generating :
 * `interfaces.ts` - This file contains the interfaces for the events and entities and enables hard type checking. (This is different from the previous one as it is generated with fully working functions for entities which point to `savingFunction.ts` and `loadingFunction.ts` instead of shell functions)
 * `eventRouter.ts` - This file contains the code for the event router function which is responsible for routing the events to the appropriate event handler.
 * `IDL_ts.ts` - exports the IDL as an interface and a json object.
 
-### [loadingFunction.ts](./ContainerFiles/loadingFunction.ts)
+### [DBFunctions.ts](./MainServer/ContainerFiles/DBFunctions.ts)
 
-This file contains the code for the loading function which is responsible for loading the entities from the database.
-
-### [savingFunction.ts](./ContainerFiles/savingFunction.ts)
-
-This file contains the code for the saving function which is responsible for saving the entities to the database.
+This file contains the code for the loading function which is responsible for loading and saving the entities from/to the database.
 
