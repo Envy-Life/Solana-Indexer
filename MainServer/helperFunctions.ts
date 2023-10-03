@@ -52,7 +52,7 @@ export async function killIfCOntainerExists(projid: string)  {
   }
 }
 
-export async function createNewIndexer(projid: string, user: string, repo: string, branch: string, RPC: string) {
+export async function createNewIndexer(projid: string, user: string, repo: string, branch: string, RPC: string, mongoURL: string) {
 try {
 let data : string = "FROM node:alpine\nWORKDIR /home/node/app\nRUN apk update && apk add git && npm install --location=global ts-node\n";
     data += "RUN git clone https://github.com/" + user + "/" + repo + " -b " + branch+"\n"
@@ -63,12 +63,14 @@ let data : string = "FROM node:alpine\nWORKDIR /home/node/app\nRUN apk update &&
     data += "RUN npm i mongodb\n"
     data += "COPY ./ContainerFiles .\n"
     data += "RUN ts-node ./generatorFunction.ts\n"
+    data += "ENV MONGO_URL " + mongoURL + "\n" 
     data += "ENV PROJECT_ID " + projid + "\n" 
     data += "ENV RPC " + RPC + "\n"
     data += "CMD [\"ts-node\", \"./index.ts\"]\n"
 fs.writeFileSync("./" + projid + ".Dockerfile.processor", data)
 execSync("docker build --no-cache -f "+ projid +".Dockerfile.processor -t " + projid + ":latest .");
-execSync('docker run --add-host=host.docker.internal:host-gateway -d --name ' + projid + ' ' + projid + ':latest');
+execSync('docker run --net=host -d --name ' + projid + ' ' + projid + ':latest');
+execSync('rm ' +  projid + ".Dockerfile.processor")
 } catch (error : any) {
   console.log(error.stderr.toString());
     if (error.stderr.toString().includes("branch" + branch + " not found")) {

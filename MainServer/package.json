@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run" : "npm i && sudo nodemon index.ts"
   },
   "author": "",
   "license": "ISC",

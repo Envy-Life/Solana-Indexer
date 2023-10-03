@@ -43,7 +43,7 @@ const indexerInputs = () => {
                 }
                 return true;
             },
-            default: "9XRQ3Wwv1Bawt1WPbp8yX8k4r6eM2ZZQyukFxJxAFtsq"
+            // default: "9XRQ3Wwv1Bawt1WPbp8yX8k4r6eM2ZZQyukFxJxAFtsq"
         },
         {
             type: "input",

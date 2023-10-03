@@ -198,7 +198,7 @@ async function processSlot(slotNumber : Number) {
         handleEvents(eventObj);
     }
     console.log(slotNumber);
-    axios.post("http://host.docker.internal:3001/update", {
+    axios.post("http://localhost:3001/update", {
         "projId" : projId,
         "blocknum" : slotNumber,
     })
@@ -213,7 +213,7 @@ function main() {
     try {
         getPreviousTransactionSlots();
     } catch (error : any) {
-        axios.post("http://host.docker.internal:3001/error" , {
+        axios.post("http://localhost:3001/error" , {
             "error" : error.message,
             "blocknum" : mostRecentSlot,
             "projId" : projId
