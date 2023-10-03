@@ -7,8 +7,8 @@ import { generator } from "./generator"
 let args = yargs.argv;
 
 
-if (args._[0].toString().toLowerCase() == "init") {
+if (args["_"].toString().toLowerCase() == "init") {
     generateIndexerProject();
-} else if (args._[0].toString().toLowerCase() == "build") {
+} else if (args["_"].toString().toLowerCase() == "build") {
     generator();
-}
+} 

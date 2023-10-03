@@ -1,13 +1,13 @@
 # Solana Indexer
 
-## Working 101 : [video](https://youtu.be/mO0jr-JiAns)
-# Main Server Files
+## Working and Set Up : [video](https://youtu.be/CfmePfs1Eq8)
+## Main Server Files
 
-## [Index.ts](./MainServer/index.ts)
+### [Index.ts](./MainServer/index.ts)
 
 This is the main file that runs the server. It is responsible for setting up the server and the routes.
 
-### PORT 3000 (external port)
+#### PORT 3000 (external port)
 
 This is the port that the server will be listening on for requests coming from the outside world.
 
@@ -17,11 +17,7 @@ This is the port that the server will be listening on for requests coming from t
 * Updating existing indexer
 * Deleting existing indexer
 
-2. **POST** `/User` : This will be controlling all the requests coming regarding the user.
-**Responsibilities :**
-* Creating new user
-
-### PORT 3001 (internal port)
+#### PORT 3001 (internal port)
 
 This is the port that the server will be listening on for requests coming from the containers.
 
@@ -33,42 +29,42 @@ This is the port that the server will be listening on for requests coming from t
 **Responsibilities :**
 * Updating the latest block processed info in the database
 
-# Indexer Client Files
+## Indexer Client Files
 
-## [index.ts](./IndexerClient/index.ts)
+### [index.ts](./IndexerClient/index.ts)
 
 Entry point for the package , handles commands and calls the appropriate functions.
 
-## [generator.ts](./IndexerClient/generator.ts)
+### [generator.ts](./IndexerClient/generator.ts)
 
 This file contains the code for the generator function which is responsible for generating : 
 * `interfaces.ts` - This file contains the interfaces for the events and entities and enables hard type checking.
 
-## [init.ts](./IndexerClient/init.ts)
+### [init.ts](./IndexerClient/init.ts)
 
 This file contains the code for the init function which is responsible for initializing the indexer folder and generating :
 * `indexer.yaml` - This file contains the configuration for the indexer. The events are read from IDL and entities are sample entities.
 * `mapping.ts` - This file contains the code for each event handler. It is responsible for processing the event and storing it in the database.
 * npm and ts configs
 
-# Container Files
+## Container Files
 
-## [index.ts](./ContainerFiles/index.ts)
+### [index.ts](./ContainerFiles/index.ts)
 
 This file connects to the RPC and listens for events.
 
-## [generatorFunction.ts](./ContainerFiles/generatorFunction.ts)
+### [generatorFunction.ts](./ContainerFiles/generatorFunction.ts)
 
 This file contains the code for the generator function which is responsible for generating :
 * `interfaces.ts` - This file contains the interfaces for the events and entities and enables hard type checking. (This is different from the previous one as it is generated with fully working functions for entities which point to `savingFunction.ts` and `loadingFunction.ts` instead of shell functions)
 * `eventRouter.ts` - This file contains the code for the event router function which is responsible for routing the events to the appropriate event handler.
 * `IDL_ts.ts` - exports the IDL as an interface and a json object.
 
-## [loadingFunction.ts](./ContainerFiles/loadingFunction.ts)
+### [loadingFunction.ts](./ContainerFiles/loadingFunction.ts)
 
 This file contains the code for the loading function which is responsible for loading the entities from the database.
 
-## [savingFunction.ts](./ContainerFiles/savingFunction.ts)
+### [savingFunction.ts](./ContainerFiles/savingFunction.ts)
 
 This file contains the code for the saving function which is responsible for saving the entities to the database.
 
